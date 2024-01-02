@@ -1,4 +1,5 @@
 
+
 import { useColorScheme} from '@mui/material/styles';
 
 import InputLabel from "@mui/material/InputLabel";
@@ -8,9 +9,12 @@ import Select from "@mui/material/Select";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
+
 import Container from '@mui/material/Container';
 import Box from '@mui/system/Box';
 import theme from './theme';
+=======
+
 
 function ModelSelect() {
   const { mode, setMode } = useColorScheme();
@@ -50,6 +54,7 @@ function ModelSelect() {
   );
 }
 
+
 function App() {
   return (
     <Container disableGutters maxWidth={false} sx={{height:'100vh'}}>
@@ -86,6 +91,33 @@ function App() {
         Content
       </Box>
     </Container>
+=======
+
+function ModeToggle() {
+  const { mode, setMode } = useColorScheme();
+  return (
+    <Button
+      onClick={() => {
+        setMode(mode === 'light' ? 'dark' : 'light');
+      }}
+    >
+      {mode === 'light' ? 'Turn dark' : 'Turn light'}
+    </Button>
+  );
+}
+
+function App() {
+  return (
+    <>
+     <ModelSelect/>
+      <hr/>
+      <div>Quang loc dev</div>
+      <Button variant="contained">Hello world</Button>
+      <AccessAlarmIcon />
+      <ThreeDRotation />
+      
+    </>
+
   );
 }
 
