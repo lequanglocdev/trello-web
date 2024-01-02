@@ -1,8 +1,4 @@
-import Button from "@mui/material/Button";
-import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
-import ThreeDRotation from "@mui/icons-material/ThreeDRotation";
-import HomeIcon from "@mui/icons-material/Home"
-import { pink } from '@mui/material/colors';
+
 
 import { useColorScheme} from '@mui/material/styles';
 
@@ -13,6 +9,12 @@ import Select from "@mui/material/Select";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
+
+import Container from '@mui/material/Container';
+import Box from '@mui/system/Box';
+import theme from './theme';
+=======
+
 
 function ModelSelect() {
   const { mode, setMode } = useColorScheme();
@@ -53,6 +55,44 @@ function ModelSelect() {
 }
 
 
+function App() {
+  return (
+    <Container disableGutters maxWidth={false} sx={{height:'100vh'}}>
+      <Box  sx={{
+              backgroundColor:'primary.light',
+              height:(theme) => theme.trello.appHeight,
+              width:'100ww',
+              display:'flex',
+              alignItems:'center'
+          }}>
+        <ModelSelect/>
+      </Box >
+
+      <Box 
+          sx={{
+            backgroundColor:'primary.dark',
+            height:(theme) => theme.trello.boardHeight,
+            width:'100ww',
+            display:'flex',
+            alignItems:'center'
+        }}
+      >
+        ModeBar
+      </Box>
+      <Box
+          sx={{
+            backgroundColor:'primary.main',
+            height:(theme) => `calc(100vh - ${theme.trello.appHeight} - ${theme.trello.boardHeight})`,
+            width:'100ww',
+            display:'flex',
+            alignItems:'center'
+        }}
+      >
+        Content
+      </Box>
+    </Container>
+=======
+
 function ModeToggle() {
   const { mode, setMode } = useColorScheme();
   return (
@@ -77,6 +117,7 @@ function App() {
       <ThreeDRotation />
       
     </>
+
   );
 }
 
