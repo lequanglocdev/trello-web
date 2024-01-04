@@ -1,7 +1,7 @@
 // Board detail
 
 import Container from "@mui/material/Container";
-import  AppBar  from "../../components/AppBar/index";
+import  AppBar  from "~/components/AppBar/index";
 import BoardBar from "./BoardBar";
 import BoardContent from "./BoardContent";
 
