@@ -24,8 +24,8 @@ const AppBar = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        paddingLeft:'10px',
-        paddingRight:'10px'
+        paddingX:2,
+        overflowX:'auto'
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
