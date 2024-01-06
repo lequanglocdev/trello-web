@@ -53,26 +53,27 @@ const theme = extendTheme({
           root: {
             // Some CSS
             textTransform:'none',
-      
+            borderWidth:'0.5px',
+            '&:hover':{borderWidth:'1px'}
           },
         },
       },
       MuiOutlinedInput:{
         styleOverrides:{
           root:({theme}) =>({
-            color:theme.palette.primary.main,
+            // color:theme.palette.primary.main,
             fontSize:'0.875rem',
-            '.MuiOutlinedInput-nochedOutline':{
-              borderColor: theme.palette.primary.light
-            },
-            '&:hover':{
-              '.MuiOutlinedInput-nochedOutline':{
-                borderColor:theme.palette.primary.main
-              }
-            },
-            '& filedset':{
-              borderWidth:'1px !important'
-            }
+            // '.MuiOutlinedInput-nochedOutline':{
+            //   borderColor: theme.palette.primary.light
+            // },
+            // '&:hover':{
+            //   '.MuiOutlinedInput-nochedOutline':{
+            //     borderColor:theme.palette.primary.main
+            //   }
+            // },
+            '& fieldset':{borderWidth:'0.5px !important'},
+            '&:hover fieldset':{borderWidth:'1px !important'},
+            '&.Mui-focused fieldset':{borderWidth:'1px !important'}
           })
         }
       },
