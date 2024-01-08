@@ -34,7 +34,6 @@ const BoardBar = () => {
         justifyContent: "space-between",
         paddingX: 2,
         overflowX: "auto",
-        borderBottom: "1px solid #ccc",
         bgcolor: (theme) => theme.palette.mode === "dark" ? "#34495e" : "#3498db",
       }}
     >
@@ -68,11 +67,15 @@ const BoardBar = () => {
 
       <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
       <Button variant="outlined" sx={{marginX:1 ,color:'white',borderColor:'white'}} startIcon={<PersonAddIcon/>}>Invite</Button>
-        <AvatarGroup total={24}
+        <AvatarGroup total={10}
           sx={{
+            gap:'6px',
             '& .MuiAvatar-root':{
               width:30,
-              height:30
+              height:30,
+              fontSize:16,
+              cursor:'pointer',
+
             }
           }}
         >
