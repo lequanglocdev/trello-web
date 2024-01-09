@@ -1,8 +1,7 @@
 import React from 'react'
 import Box from "@mui/system/Box";
 import Card from "./Card/Card";
-
-const ListCard = () => {
+const ListCard = ({cards}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -11,6 +10,7 @@ const ListCard = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+ 
   return (
     <Box
       sx={{
@@ -36,6 +36,7 @@ const ListCard = () => {
         },
       }}
     >
+     {cards?.map(card => <Card key={card.id} card={card}/>)}
      <Card/>
 
     </Box>

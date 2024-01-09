@@ -16,7 +16,9 @@ import Cloud from "@mui/icons-material/Cloud";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ListCard from './ListCard/ListCard';
 import DragHandleIcon from "@mui/icons-material/DragHandle";
-const Column = () => {
+import {mapOrder} from '~/utils/sort'
+
+const Column = ({column}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -25,8 +27,9 @@ const Column = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const orderedCard = mapOrder(column?.cards , column?.cardOrderIds , '_id')
   return (
+    
     <Box
     sx={{
       minWidth: "280px",
@@ -58,7 +61,7 @@ const Column = () => {
           fontSize: "1rem",
         }}
       >
-        Column Title
+       {column?.title}
       </Typography>
       <Box>
         <KeyboardArrowDownIcon
@@ -119,7 +122,7 @@ const Column = () => {
     </Box>
 
     {/* box content */}
-      <ListCard/>
+      <ListCard cards={orderedCard}/>
 
     {/* box footer */}
     <Box

@@ -10,6 +10,7 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import {capitalizeFirstLetter} from '~/utils/fomatter'
 const menuStyle = {
   color: "white",
   bgcolor: (theme) => theme.palette.mode === "dark" ? "#34495e" : "#3498db",
@@ -23,7 +24,8 @@ const menuStyle = {
   },
 };
 
-const BoardBar = () => {
+const BoardBar = (props) => {
+  const {board} = props
   return (
     <Box
       sx={{
@@ -40,13 +42,13 @@ const BoardBar = () => {
       <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
         <Chip
           icon={<DashboardIcon />}
-          label="lequangloc"
+          label={board?.title}
           clickable
           sx={menuStyle}
         />
         <Chip
           icon={<VpnLockIcon />}
-          label="Public/Pravite WorkSpace"
+          label={capitalizeFirstLetter(board?.type)}
           clickable
           sx={menuStyle}
         />
