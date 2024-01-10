@@ -36,8 +36,8 @@ const ListCard = ({cards}) => {
         },
       }}
     >
-     {cards?.map(card => <Card key={card.id} card={card}/>)}
-     <Card/>
+     {cards?.map(card => <Card key={card._id} card={card}/>)}
+     
 
     </Box>
   )
