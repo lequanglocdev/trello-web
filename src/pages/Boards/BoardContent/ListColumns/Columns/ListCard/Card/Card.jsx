@@ -8,15 +8,25 @@ import CardMedia from "@mui/material/CardMedia";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import CommentIcon from "@mui/icons-material/Comment";
 import AttachmentIcon from "@mui/icons-material/Attachment";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 const Card = ({ card }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+ 
+  const { attributes, listeners, setNodeRef, transform, transition ,touchAction ,isDragging} =
+    useSortable({
+      id: card._id,
+      data: { ...card },
+    });
+
+  const dndkitCardStyle = {
+   
+    // Nếu như chổ CSS.Transform sẽ bị lỗi kiểu stretch 
+    transform: CSS.Translate.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : undefined,
+    border: isDragging  ? 0.5 : undefined
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
   const showCardAction = () => {
     return (
       !!card?.memberIds?.length ||
@@ -24,8 +34,13 @@ const Card = ({ card }) => {
       !!card?.attachments?.length
     );
   };
+  
   return (
     <MuiCard
+    ref={setNodeRef}
+      style={dndkitCardStyle}
+      {...attributes}
+      {...listeners}
       sx={{
         cursor: "pointer",
         boxShadow: "0 1px 1px rgba(0,0,0,0.2)",

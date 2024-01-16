@@ -1,6 +1,8 @@
 import React from 'react'
 import Box from "@mui/system/Box";
 import Card from "./Card/Card";
+import { SortableContext , verticalListSortingStrategy } from "@dnd-kit/sortable";
+
 const ListCard = ({cards}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -12,7 +14,8 @@ const ListCard = ({cards}) => {
   };
  
   return (
-    <Box
+    <SortableContext items={cards?.map(c => c._id)}  strategy={verticalListSortingStrategy}>
+          <Box
       sx={{
         p: '0 5px',
         m: '0 5px',
@@ -40,6 +43,8 @@ const ListCard = ({cards}) => {
      
 
     </Box>
+    </SortableContext>
+  
   )
 }
 

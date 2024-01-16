@@ -21,7 +21,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 const Column = ({ column }) => {
-  const { attributes, listeners, setNodeRef, transform, transition ,touchAction } =
+  const { attributes, listeners, setNodeRef, transform, transition ,touchAction ,isDragging} =
     useSortable({
       id: column._id,
       data: { ...column },
@@ -32,6 +32,12 @@ const Column = ({ column }) => {
     // Nếu như chổ CSS.Transform sẽ bị lỗi kiểu stretch 
     transform: CSS.Translate.toString(transform),
     transition,
+    /* chiều cao phải luôn max 100% vì nếu không sẽ lỗi lúc kéo column ngắn qua một cái column dài thì 
+        dài thì phải kéo ở khu vực giữa giữa rất khó chịu , 
+        {...listeners} nằm ở Box để tránh kéo ngoài vùng 
+    */
+    height:'100%',
+    opacity: isDragging ? 0.5 : undefined
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -44,10 +50,9 @@ const Column = ({ column }) => {
   };
   const orderedCard = mapOrder(column?.cards, column?.cardOrderIds, "_id");
   return (
-    <Box
-      ref={setNodeRef}
-      style={dndkitColumnStyle}
-      {...attributes}
+    <div ref={setNodeRef} style={dndkitColumnStyle} {...attributes}>
+         <Box
+      
       {...listeners}
       sx={{
         minWidth: "280px",
@@ -162,6 +167,8 @@ const Column = ({ column }) => {
         </Tooltip>
       </Box>
     </Box>
+    </div>
+   
   );
 };
 
